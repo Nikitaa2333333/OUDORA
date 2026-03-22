@@ -10,7 +10,7 @@ export default function App() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   // ФОРМА БУДЕТ ОТПРАВЛЯТЬСЯ СЮДА
-  const FORMSPREE_URL = "https://formspree.io/f/ВАШ_АЙДИ_ЗДЕСЬ";
+  const FORMSPREE_URL = "https://formspree.io/f/xzdjlbpb";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
