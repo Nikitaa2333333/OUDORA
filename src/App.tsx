@@ -6,7 +6,7 @@ import React, { useState } from 'react';
  */
 
 export default function App() {
-  const [formData, setFormData] = useState({ name: '', phone: '', email: '' });
+  const [formData, setFormData] = useState({ name: '', phone: '', company: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   // ФОРМА БУДЕТ ОТПРАВЛЯТЬСЯ СЮДА
@@ -23,7 +23,7 @@ export default function App() {
       });
       if (response.ok) {
         setStatus('success');
-        setFormData({ name: '', phone: '', email: '' });
+        setFormData({ name: '', phone: '', company: '' });
       } else {
         setStatus('error');
       }
@@ -63,58 +63,64 @@ export default function App() {
             <div className="absolute -bottom-8 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent animate-line"></div>
           </h1>
 
-          <div className="animate-reveal opacity-0" style={{ animationDelay: '1s' }}>
-            <p className="text-xl md:text-3xl mt-12 font-serif italic max-w-3xl mx-auto text-white/70 leading-relaxed font-light">
+          <div className="animate-reveal opacity-0" style={{ animationDelay: '0.8s' }}>
+            <h2 className="text-2xl md:text-4xl lg:text-5xl tracking-[0.1em] uppercase font-light font-serif text-white mt-12 mb-6">
+              Аромомашины и натуральные масла
+            </h2>
+          </div>
+
+          <div className="animate-reveal opacity-0" style={{ animationDelay: '1.2s' }}>
+            <p className="text-lg md:text-xl lg:text-2xl max-w-4xl mx-auto text-white/80 leading-relaxed font-light font-serif mt-4">
+              Помогаем бизнесам с офлайн сервисом увеличить лояльность клиентов через профессиональную ароматизацию и создание запоминающихся эмоциональных впечатлений
+            </p>
+          </div>
+
+          <div className="animate-reveal opacity-0 mt-20" style={{ animationDelay: '1.6s' }}>
+            <p className="text-2xl md:text-3xl lg:text-4xl italic max-w-4xl mx-auto text-white/70 leading-relaxed font-normal font-serif">
               «Аромат формирует эмоциональную связь с брендом быстрее, чем визуальные элементы»
             </p>
           </div>
         </div>
 
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 animate-reveal opacity-0" style={{ animationDelay: '1.5s' }}>
-          <span className="text-[10px] uppercase tracking-[0.4em] text-white/20 select-none">Découvrir</span>
-          <div className="relative w-[1px] h-20 bg-white/10 overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1/2 bg-[#D4AF37] animate-[scroll-hint_2s_infinite]"></div>
-          </div>
-        </div>
       </header>
 
       {/* Main Content — ONLY VISUALS */}
       <main className="px-6 lg:px-12 py-32 max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
           {/* Main Visual */}
-          <div className="md:col-span-2 lg:col-span-2 aspect-[16/10] overflow-hidden bg-neutral-900 border border-white/5 group">
+          <div className="md:col-span-2 lg:col-span-2 overflow-hidden bg-neutral-900 border border-white/5 group">
             <img 
               src="/f1.jpg" 
               alt="Luxury Aesthetic"
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80"
+              className="w-full h-auto transition-transform duration-1000 group-hover:scale-105 opacity-80"
               referrerPolicy="no-referrer"
             />
           </div>
           
           {/* Side Visual */}
-          <div className="aspect-[3/4] overflow-hidden bg-neutral-900 border border-white/5 group">
+          <div className="overflow-hidden bg-neutral-900 border border-white/5 group">
             <img 
               src="/f2.jpg" 
               alt="Luxury Aesthetic"
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-70"
+              className="w-full h-auto transition-transform duration-1000 group-hover:scale-110 opacity-70"
               referrerPolicy="no-referrer"
             />
           </div>
 
           {/* Bottom Grid */}
-          <div className="aspect-square overflow-hidden bg-neutral-900 border border-white/5 group">
+          <div className="overflow-hidden bg-neutral-900 border border-white/5 group">
             <img 
               src="/f3.jpg" 
               alt="Luxury Aesthetic"
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80"
+              className="w-full h-auto transition-transform duration-1000 group-hover:scale-105 opacity-80"
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="md:col-span-2 aspect-[16/7] overflow-hidden bg-neutral-900 border border-white/5 group">
+          <div className="md:col-span-2 overflow-hidden bg-neutral-900 border border-white/5 group">
             <img 
               src="/f4.jpg" 
               alt="Luxury Aesthetic"
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80"
+              className="w-full h-auto transition-transform duration-1000 group-hover:scale-105 opacity-80"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -145,7 +151,7 @@ export default function App() {
               <div className="space-y-8">
                 <input name="name" type="text" placeholder="ВАШЕ ИМЯ" required className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-[#D4AF37] transition-all font-sans text-xs tracking-[0.2em] font-light placeholder:text-white/20" value={formData.name} onChange={handleChange} />
                 <input name="phone" type="tel" placeholder="ТЕЛЕФОН" required className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-[#D4AF37] transition-all font-sans text-xs tracking-[0.2em] font-light placeholder:text-white/20" value={formData.phone} onChange={handleChange} />
-                <input name="email" type="email" placeholder="EMAIL" required className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-[#D4AF37] transition-all font-sans text-xs tracking-[0.2em] font-light placeholder:text-white/20" value={formData.email} onChange={handleChange} />
+                <input name="company" type="text" placeholder="НАЗВАНИЕ КОМПАНИИ" required className="w-full bg-transparent border-b border-white/10 py-3 outline-none focus:border-[#D4AF37] transition-all font-sans text-xs tracking-[0.2em] font-light placeholder:text-white/20" value={formData.company} onChange={handleChange} />
               </div>
               <button type="submit" disabled={status === 'submitting'} className="w-full group relative overflow-hidden bg-white text-black py-5 font-sans font-bold uppercase text-[11px] tracking-[0.4em] transition-all duration-700 hover:text-white disabled:opacity-50">
                 <div className="absolute inset-x-0 bottom-0 h-0 bg-[#D4AF37] transition-all duration-500 group-hover:h-full"></div>
@@ -158,7 +164,7 @@ export default function App() {
 
       <footer className="py-20 border-t border-white/5 text-center">
         <div className="flex justify-center mb-8">
-          <a href="https://vk.ru/club236933541" target="_blank" rel="noopener noreferrer" className="text-[10px] tracking-[0.3em] text-white/40 hover:text-[#D4AF37] transition-colors uppercase font-sans">VK</a>
+          <a href="https://vk.ru/club236933541" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl tracking-[0.3em] text-white/40 hover:text-[#D4AF37] transition-colors uppercase font-sans">Мы Вконтакте</a>
         </div>
         <p className="text-[9px] tracking-[0.5em] text-white/10 uppercase font-sans">© 2026 OUDORA Maison de Parfum • All Rights Reserved</p>
       </footer>
