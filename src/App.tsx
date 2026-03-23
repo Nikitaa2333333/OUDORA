@@ -9,18 +9,31 @@ export default function App() {
   const [formData, setFormData] = useState({ name: '', phone: '', company: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
-  // ФОРМА БУДЕТ ОТПРАВЛЯТЬСЯ СЮДА
-  const FORMSPREE_URL = "https://formspree.io/f/xzdjlbpb";
+  // URL для SheetDB (напрямую в Google Таблицу)
+  const SHEETDB_URL = "https://sheetdb.io/api/v1/jg4v3rh9itl0n";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('submitting');
     try {
-      const response = await fetch(FORMSPREE_URL, {
+      const response = await fetch(SHEETDB_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(formData),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          data: [
+            {
+              "Имя": formData.name,
+              "Телефон": formData.phone,
+              "Компания": formData.company,
+              "Дата": new Date().toLocaleString('ru-RU') // Добавим дату для удобства
+            }
+          ]
+        }),
       });
+
       if (response.ok) {
         setStatus('success');
         setFormData({ name: '', phone: '', company: '' });
@@ -75,13 +88,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="animate-reveal opacity-0 mt-20" style={{ animationDelay: '1.6s' }}>
-            <p className="text-2xl md:text-3xl lg:text-4xl italic max-w-4xl mx-auto text-white/70 leading-relaxed font-normal font-serif">
-              «Аромат формирует эмоциональную связь с брендом быстрее, чем визуальные элементы»
-            </p>
-          </div>
         </div>
-
       </header>
 
       {/* Main Content — ONLY VISUALS */}
@@ -125,7 +132,12 @@ export default function App() {
             />
           </div>
         </div>
-
+          {/* Quote after photos */}
+          <div className="animate-reveal opacity-0 mt-32 text-center" style={{ animationDelay: '0.5s' }}>
+            <p className="text-2xl md:text-3xl lg:text-4xl italic max-w-4xl mx-auto text-white/70 leading-relaxed font-normal font-serif px-6">
+              «Аромат формирует эмоциональную связь с брендом быстрее, чем визуальные элементы»
+            </p>
+          </div>
 
       </main>
 
@@ -163,8 +175,9 @@ export default function App() {
       </section>
 
       <footer className="py-20 border-t border-white/5 text-center">
-        <div className="flex justify-center mb-8">
-          <a href="https://vk.ru/club236933541" target="_blank" rel="noopener noreferrer" className="text-xl md:text-2xl tracking-[0.3em] text-white/40 hover:text-[#D4AF37] transition-colors uppercase font-sans">Мы Вконтакте</a>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-16 mb-12">
+          <a href="https://vk.ru/club236933541" target="_blank" rel="noopener noreferrer" className="text-sm md:text-base tracking-[0.4em] text-white/40 hover:text-[#D4AF37] transition-all duration-300 uppercase font-sans border-b border-transparent hover:border-[#D4AF37]/30 pb-1">Мы Вконтакте</a>
+          <a href="https://t.me/oudora_atmosphere" target="_blank" rel="noopener noreferrer" className="text-sm md:text-base tracking-[0.4em] text-white/40 hover:text-[#D4AF37] transition-all duration-300 uppercase font-sans border-b border-transparent hover:border-[#D4AF37]/30 pb-1">Мы в Telegram</a>
         </div>
         <p className="text-[9px] tracking-[0.5em] text-white/10 uppercase font-sans">© 2026 OUDORA Maison de Parfum • All Rights Reserved</p>
       </footer>
