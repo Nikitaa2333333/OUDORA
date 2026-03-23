@@ -177,7 +177,7 @@ export default function App() {
       <footer className="py-20 border-t border-white/5 text-center">
         <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-16 mb-12">
           <a href="https://vk.ru/club236933541" target="_blank" rel="noopener noreferrer" className="text-sm md:text-base tracking-[0.4em] text-white/40 hover:text-[#D4AF37] transition-all duration-300 uppercase font-sans border-b border-transparent hover:border-[#D4AF37]/30 pb-1">Мы Вконтакте</a>
-          <a href="https://t.me/oudora_atmosphere" target="_blank" rel="noopener noreferrer" className="text-sm md:text-base tracking-[0.4em] text-white/40 hover:text-[#D4AF37] transition-all duration-300 uppercase font-sans border-b border-transparent hover:border-[#D4AF37]/30 pb-1">Мы в Telegram</a>
+          <a href="https://t.me/OUDORA" target="_blank" rel="noopener noreferrer" className="text-sm md:text-base tracking-[0.4em] text-white/40 hover:text-[#D4AF37] transition-all duration-300 uppercase font-sans border-b border-transparent hover:border-[#D4AF37]/30 pb-1">Мы в Telegram</a>
         </div>
         <p className="text-[9px] tracking-[0.5em] text-white/10 uppercase font-sans">© 2026 OUDORA Maison de Parfum • All Rights Reserved</p>
       </footer>
